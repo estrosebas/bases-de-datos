@@ -1,6 +1,6 @@
 -- Crear base de datos y uso
-CREATE DATABASE IF NOT EXISTS matriculasTest2;
-USE matriculasTest2;
+CREATE DATABASE IF NOT EXISTS matriculas;
+USE matriculas;
 -- Crear tabla `distriitoalum`
 CREATE TABLE IF NOT EXISTS `distriitoalum` (
   `id_distritoAlum` int(11) NOT NULL AUTO_INCREMENT, -- Identificador único para distritos de alumnos
