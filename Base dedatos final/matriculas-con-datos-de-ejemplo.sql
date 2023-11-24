@@ -517,7 +517,7 @@ ALTER TABLE `matricula`
 ALTER TABLE `representante`
   ADD CONSTRAINT `distriRe` FOREIGN KEY (`id_distritoR`) REFERENCES `distritorepre` (`id_distritoR`),
   ADD CONSTRAINT `tele` FOREIGN KEY (`id_telefono`) REFERENCES `telefono` (`id_telefono`);
-COMMIT;
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
