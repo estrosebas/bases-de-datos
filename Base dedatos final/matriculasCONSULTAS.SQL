@@ -340,6 +340,117 @@ FROM distriitoalum;
 
 -- ---------------------------------------------------------------
 
+---------------------------------
+---Prodecimientos almacenados----
+---------------------------------
+
+-- Cambiamos el delimitador para evitar conflictos con los puntos y coma dentro del procedimiento
+DELIMITER //
+
+-- Creamos el procedimiento ObtenerInformacionAlumno
+CREATE PROCEDURE ObtenerInformacionAlumno(
+    IN p_alumno_id INT
+)
+BEGIN
+    SELECT *
+    FROM alumno
+    WHERE id_Alumno = p_alumno_id;
+END //
+
+-- Restauramos el delimitador original
+DELIMITER ;
+
+-- ---------------------------------------------------------------
+
+-- Cambiamos el delimitador para evitar conflictos con los puntos y coma dentro del procedimiento
+DELIMITER //
+
+-- Creamos el procedimiento EliminarAlumno
+CREATE PROCEDURE EliminarAlumno(
+    IN p_alumno_id INT
+)
+BEGIN
+    DELETE FROM alumno
+    WHERE id_Alumno = p_alumno_id;
+END //
+
+-- Restauramos el delimitador original
+DELIMITER ;
+
+-- ---------------------------------------------------------------
+
+-- Cambiamos el delimitador para evitar conflictos con los puntos y coma dentro del procedimiento
+DELIMITER //
+
+-- Creamos el procedimiento ObtenerAlumnosPorNivelYGrado
+CREATE PROCEDURE ObtenerAlumnosPorNivelYGrado(
+    IN p_nivel VARCHAR(30),
+    IN p_grado INT
+)
+BEGIN
+    SELECT *
+    FROM alumno
+    WHERE nivel_ing = p_nivel AND grado_ing = p_grado;
+END //
+
+-- Restauramos el delimitador original
+DELIMITER ;
+
+
+-- ---------------------------------------------------------------
+
+-- Cambiamos el delimitador para evitar conflictos con los puntos y coma dentro del procedimiento
+DELIMITER //
+
+-- Creamos el procedimiento ActualizarInformacionAlumno
+CREATE PROCEDURE ActualizarInformacionAlumno(
+    IN p_alumno_id INT,
+    IN p_nuevo_domicilio VARCHAR(30),
+    IN p_nuevo_nivel_ingreso VARCHAR(30),
+    IN p_nuevo_grado_ingreso INT
+)
+BEGIN
+    UPDATE alumno
+    SET domicilio = p_nuevo_domicilio,
+        nivel_ing = p_nuevo_nivel_ingreso,
+        grado_ing = p_nuevo_grado_ingreso
+    WHERE id_Alumno = p_alumno_id;
+END //
+
+-- Restauramos el delimitador original
+DELIMITER ;
+
+-- ---------------------------------------------------------------
+
+-- Cambiamos el delimitador para evitar conflictos con los puntos y coma dentro del procedimiento
+DELIMITER //
+
+-- Creamos el procedimiento InsertarAlumno
+CREATE PROCEDURE InsertarAlumno(
+    IN p_dni INT,
+    IN p_nombre VARCHAR(30),
+    IN p_apellido_paterno VARCHAR(30),
+    IN p_apellido_materno VARCHAR(30),
+    IN p_fecha_nacimiento DATE,
+    IN p_sexo VARCHAR(30),
+    IN p_distrito_id INT,
+    IN p_domicilio VARCHAR(30),
+    IN p_nivel_ingreso VARCHAR(30),
+    IN p_grado_ingreso INT,
+    IN p_colegio_anterior VARCHAR(30),
+    IN p_habilidad_id INT,
+    IN p_representante_id INT,
+    IN p_relacion_representante VARCHAR(30)
+)
+BEGIN
+    INSERT INTO alumno (dni_Alumno, nom_Alu, ape_PAl, ape_MAl, fec_Nac, sexo, id_distritoAlum, domicilio, nivel_ing, grado_ing, colegio_ant, id_habilidad, id_Repre, relacion)
+    VALUES (p_dni, p_nombre, p_apellido_paterno, p_apellido_materno, p_fecha_nacimiento, p_sexo, p_distrito_id, p_domicilio, p_nivel_ingreso, p_grado_ingreso, p_colegio_anterior, p_habilidad_id, p_representante_id, p_relacion_representante);
+END //
+
+-- Restauramos el delimitador original
+DELIMITER ;
+
+
 -----------------
 --Diccionario----
 -----------------
